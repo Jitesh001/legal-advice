@@ -104,17 +104,18 @@ st.sidebar.button("New Chat", on_click=new_chat, type='primary')
 user_input = get_text()
 
 # Generate output using the ConversationChain object
-if user_input:
-    # Extract history and entities from memory
-    history = st.session_state.entity_memory.buffer
-    entities = st.session_state.entity_memory.entity_store
-
-    # Generate the response using the updated ConversationChain
-    output = Conversation.run(input=user_input, history=history, entities=entities)
-
-    # Update the session state with new user input and output
-    st.session_state.past.append(user_input)
-    st.session_state.generated.append(output)
+if st.button("Submit"):
+    if user_input:
+        # Extract history and entities from memory
+        history = st.session_state.entity_memory.buffer
+        entities = st.session_state.entity_memory.entity_store
+    
+        # Generate the response using the updated ConversationChain
+        output = Conversation.run(input=user_input, history=history, entities=entities)
+    
+        # Update the session state with new user input and output
+        st.session_state.past.append(user_input)
+        st.session_state.generated.append(output)
 
 # Display conversation history
 download_str = []
