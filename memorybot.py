@@ -1,10 +1,15 @@
-API_O = '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'
-
+from dotenv import load_dotenv
+import os
 from langchain.prompts import PromptTemplate
 from langchain.chains import ConversationChain
 from langchain.chat_models import ChatOpenAI
 import streamlit as st
 from langchain.chains.conversation.memory import ConversationEntityMemory
+
+# Load environment variables from .env file
+load_dotenv()
+openai.api_key =  
+API_O = os.getenv('API_KEY')
 
 # Define the legal context as part of the prompt template
 legal_context = """
